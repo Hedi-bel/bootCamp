@@ -1,0 +1,21 @@
+services:
+  micro-ros-agent:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: esprit-micro-ros-agent:latest
+    container_name: micro_ros_agent
+    restart: unless-stopped
+
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+
+    network_mode: host
+
+    # Raise real-time priority to reduce scheduling jitter
+    ulimits:
+      rtprio: 99
+
+    # Override CMD here to change transport / port / verbosity, e.g.:
+    # command: ["udp4", "--port", "8888", "-v4"]

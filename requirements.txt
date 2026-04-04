@@ -1,0 +1,19 @@
+# Factory Guardian — Python Dependencies
+# Install with:  pip install -r requirements.txt
+
+# Core UI and LLM
+gradio>=4.0.0
+litellm>=1.0.0
+pydantic-settings>=2.0.0
+
+# Computer vision / YOLO
+ultralytics>=8.0.0
+opencv-python-headless>=4.8.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# MQTT (ESP32 communication) — optional, mock mode works without it
+paho-mqtt>=1.6.0
+
+# rclpy and geometry_msgs come from the ROS 2 installation — NOT pip.
+# Only needed if you want to use ros_bridge_legacy.py with real ROS 2 hardware.
