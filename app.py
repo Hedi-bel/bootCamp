@@ -127,15 +127,7 @@ def handle_quick_action(action: str, history: list, image_state: str | None):
 # ---------------------------------------------------------------------------
 
 def build_ui() -> gr.Blocks:
-    with gr.Blocks(
-        title="🏭 Factory Guardian",
-        theme=gr.themes.Soft(primary_hue="orange", secondary_hue="blue"),
-        css="""
-        .header { text-align: center; padding: 10px; }
-        .status-bar { padding: 8px 12px; border-radius: 8px;
-                      background: #1a1a2e; color: #e0e0e0; font-family: monospace; }
-        """,
-    ) as demo:
+    with gr.Blocks() as demo:
 
         # Header
         gr.Markdown(
@@ -286,6 +278,12 @@ def build_ui() -> gr.Blocks:
 if __name__ == "__main__":
     ui = build_ui()
     ui.launch(
-        server_name=settings.gradio_server_name,
+        server_name="127.0.0.1",
         server_port=settings.gradio_server_port,
+        theme=gr.themes.Soft(primary_hue="orange", secondary_hue="blue"),
+        css="""
+        .header { text-align: center; padding: 10px; }
+        .status-bar { padding: 8px 12px; border-radius: 8px;
+                      background: #1a1a2e; color: #e0e0e0; font-family: monospace; }
+        """,
     )
